@@ -86,7 +86,7 @@ object stock extends App with EquityInfoProtocol with TelegramProtocol{
             if (math.abs(change) > threshold ) {
 
               // Request tweets here
-              val bearer_token = "AAAAAAAAAAAAAAAAAAAAABoCXgEAAAAA%2Fywpstn66jWtU%2BUPxEvewEBd9gs%3DCjyeAelogvSYHAFTclWfAQrKvMs7EEoZyYSOHTdc4M0MPFmB6W"
+              val bearer_token = "{INSERT-HERE-BEARER-TOKEN}"
               val twitter_api_endpoint = f"https://api.twitter.com/2/tweets/search/recent"
               val twitter_auth_header = RawHeader("Authorization", "Bearer " + bearer_token)
 
@@ -125,7 +125,7 @@ object stock extends App with EquityInfoProtocol with TelegramProtocol{
                   val notificationMessage = new NotificationMessage(chat_id = -698158542, text = notificationText)
                   val notification = Http().singleRequest(HttpRequest(
                     method = HttpMethods.POST,
-                    uri = "https://api.telegram.org/bot5076837927:AAFp7kIvr3du-PE6qCF5veTybGXOVx-YPfc/sendMessage",
+                    uri = "https://api.telegram.org/{INSERT-HERE-TELEGRAM-TOKEN}/sendMessage",
                     entity = HttpEntity(ContentTypes.`application/json`,
                       notificationMessage.toJson.prettyPrint )
                   )
